@@ -1,0 +1,11 @@
+Model Information:
+* title:	Psyche Astroid HR
+* source:	https://sketchfab.com/3d-models/psyche-astroid-hr-a4a41abfb37c48d3b1ced5fc683e2853
+* author:	mshafaq (https://sketchfab.com/mshafaq)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Psyche Astroid HR" (https://sketchfab.com/3d-models/psyche-astroid-hr-a4a41abfb37c48d3b1ced5fc683e2853) by mshafaq (https://sketchfab.com/mshafaq) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
