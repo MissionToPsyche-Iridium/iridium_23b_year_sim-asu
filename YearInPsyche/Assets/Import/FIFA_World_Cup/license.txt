@@ -1,0 +1,11 @@
+Model Information:
+* title:	FIFA World Cup
+* source:	https://sketchfab.com/3d-models/fifa-world-cup-f8e05327c9f149139380207c6d494956
+* author:	Daily Footy Models (https://sketchfab.com/DailyFootyModels)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "FIFA World Cup" (https://sketchfab.com/3d-models/fifa-world-cup-f8e05327c9f149139380207c6d494956) by Daily Footy Models (https://sketchfab.com/DailyFootyModels) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
