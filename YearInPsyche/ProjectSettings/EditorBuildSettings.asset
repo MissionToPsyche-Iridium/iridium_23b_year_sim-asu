@@ -17,6 +17,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Prototypes/Titanic Prototype.unity
     guid: ae743302c00daef4c85731638037d31a
+  - enabled: 1
+    path: Assets/_Scenes/Prototypes/Dog Years Prototype.unity
+    guid: 8342fd707288ae244ab8544a2c0c36eb
+  - enabled: 1
+    path: Assets/_Scenes/Prototypes/Car Prototype.unity
+    guid: 510faaeacc1f84944ae2ebfe0120bf44
+  - enabled: 1
+    path: Assets/_Scenes/Prototypes/Quiz Question 1.unity
+    guid: 012895fd7b35c2a4e91caa0f541506b3
+  - enabled: 1
+    path: Assets/_Scenes/Prototypes/Quiz Question 2.unity
+    guid: 77f50985f61e35d4b8ff3e4d03c1e5a1
+  - enabled: 1
+    path: Assets/_Scenes/Prototypes/Quiz Question 3.unity
+    guid: 460736843b29b644389871d15ea6e231
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

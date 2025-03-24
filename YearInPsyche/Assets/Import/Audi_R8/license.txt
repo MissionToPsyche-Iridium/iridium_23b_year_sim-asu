@@ -1,0 +1,8 @@
+Model Information:
+* title:	Audi R8
+* source:	https://sketchfab.com/3d-models/audi-r8-3ca6699e63d0491e909ff8f16a3ee349
+* author:	khaizahda (https://sketchfab.com/khaizahda)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
