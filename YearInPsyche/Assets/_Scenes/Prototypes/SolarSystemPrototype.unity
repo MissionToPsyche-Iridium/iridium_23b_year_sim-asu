@@ -536,11 +536,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8264072340212603430, guid: 9674b1e71a0592240b170675e4d6fe78, type: 3}
   m_PrefabInstance: {fileID: 1402069499}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &270419634 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9136113810759814692, guid: 9674b1e71a0592240b170675e4d6fe78, type: 3}
-  m_PrefabInstance: {fileID: 1402069499}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &270419635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -714,6 +709,7 @@ GameObject:
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
   - component: {fileID: 330585549}
+  - component: {fileID: 330585550}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -788,13 +784,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 4900, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 0.407953, z: -0, w: -0.91300297}
+  m_LocalPosition: {x: 4809.4, y: 0, z: -298.5}
   m_LocalScale: {x: 400, y: 400, z: 400}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 311.847, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -851,12 +847,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aecc3b798aa803479761aac57f82299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  celestialObject: {fileID: 270419634}
+  obj: {fileID: 0}
   distance: 10
   rotationSpeed: 50
   smoothSpeed: 5
   minDistance: 5
   maxDistance: 1000
+  move: 0
 --- !u!114 &330585549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -864,7 +861,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7b550b72806ad844b1409ce63ec5ee0, type: 3}
   m_Name: 
@@ -873,6 +870,28 @@ MonoBehaviour:
   targetRotation: {x: 0, y: 0.043619387, z: 0, w: 0.99904823}
   moveSpeed: 650
   rotateSpeed: 50
+--- !u!95 &330585550
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 21be82a73fe40cc4d94c52e2edb5b349, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &342651167
 GameObject:
   m_ObjectHideFlags: 0
