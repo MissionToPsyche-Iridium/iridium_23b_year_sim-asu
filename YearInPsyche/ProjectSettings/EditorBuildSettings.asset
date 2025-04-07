@@ -32,6 +32,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Prototypes/Quiz Question 3.unity
     guid: 460736843b29b644389871d15ea6e231
+  - enabled: 1
+    path: Assets/_Scenes/Prototypes/Quiz Question 4.unity
+    guid: f8c09e2b3a468d849935ed7ccb726b50
+  - enabled: 1
+    path: Assets/_Scenes/Prototypes/Quiz Question 5.unity
+    guid: 260276a9a567db349810ea681e17de86
+  - enabled: 1
+    path: Assets/_Scenes/Prototypes/Quiz Question 6.unity
+    guid: 6bef08f0199545b47a4a094957b15fde
+  - enabled: 1
+    path: Assets/_Scenes/Prototypes/Quiz Question 7.unity
+    guid: 3b06a26b3dd79774aa047086b8ef6f15
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
