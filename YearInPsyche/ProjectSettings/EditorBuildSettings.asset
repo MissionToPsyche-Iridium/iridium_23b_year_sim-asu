@@ -24,6 +24,12 @@ EditorBuildSettings:
     path: Assets/_Scenes/Prototypes/Car Prototype.unity
     guid: 510faaeacc1f84944ae2ebfe0120bf44
   - enabled: 1
+    path: Assets/_Scenes/Prototypes/Massachusetts Comparison.unity
+    guid: 8cf7bc05932c51249b1a668d01c18478
+  - enabled: 1
+    path: Assets/_Scenes/Prototypes/Earth Comparison.unity
+    guid: 9bc49e7445f39534c9a55ad0875c7c1b
+  - enabled: 1
     path: Assets/_Scenes/Prototypes/Quiz Question 1.unity
     guid: 012895fd7b35c2a4e91caa0f541506b3
   - enabled: 1
@@ -44,6 +50,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Prototypes/Quiz Question 7.unity
     guid: 3b06a26b3dd79774aa047086b8ef6f15
+  - enabled: 1
+    path: Assets/_Scenes/Prototypes/Quiz Question 8.unity
+    guid: fecbbd6b33d57d542875233085f9c293
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
