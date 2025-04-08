@@ -16,6 +16,9 @@ public class OrbTransition : MonoBehaviour
     public GameObject simpleText;
     public GameObject disclaimerText;
 
+    public Transform cameraPivot;
+    public float orbitSpeed = 20f;
+
     public float orbScaleFactor = 10f;
     public float orbScaleTime = 1.5f;
     public float startDelay = 1f;
@@ -29,6 +32,7 @@ public class OrbTransition : MonoBehaviour
     private float currentSpinSpeed = 1f;
     private bool spinPsyche = false;
     private bool spinPotato = false;
+    private bool spinCamera = false;
 
     void Start()
     {
@@ -49,6 +53,7 @@ public class OrbTransition : MonoBehaviour
 
         StartCoroutine(GrowShrinkOrb());
         StartCoroutine(SpinAndDisappearPsyche());
+        spinCamera = true;
         yield return null;
     }
 
@@ -132,6 +137,10 @@ public class OrbTransition : MonoBehaviour
         if (spinPotato && potato.activeSelf)
         {
             potato.transform.Rotate(Vector3.up, currentSpinSpeed * Time.deltaTime);
+        }
+        if (spinCamera)
+        {
+            cameraPivot.Rotate(Vector3.up, orbitSpeed * Time.deltaTime);
         }
     }
 }

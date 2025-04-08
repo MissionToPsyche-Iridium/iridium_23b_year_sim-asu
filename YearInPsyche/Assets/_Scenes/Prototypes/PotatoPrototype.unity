@@ -456,14 +456,16 @@ MonoBehaviour:
   infoText: {fileID: 1897300098}
   simpleText: {fileID: 1475222923}
   disclaimerText: {fileID: 529193415}
-  orbScaleFactor: 3.3
-  orbScaleTime: 0.5
-  startDelay: 1.5
+  cameraPivot: {fileID: 415500083}
+  orbitSpeed: 1
+  orbScaleFactor: 30
+  orbScaleTime: 0.25
+  startDelay: 2.25
   pauseDuration: 0
-  spinUpSpeed: 720
+  spinUpSpeed: 5000
   spinStartSpeed: 90
-  spinUpTime: 2
-  spinDownTime: 2
+  spinUpTime: 2.5
+  spinDownTime: 2.5
 --- !u!135 &415500080
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -550,7 +552,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -2.64}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1854786000}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &529193415
@@ -1767,11 +1770,11 @@ Transform:
   m_GameObject: {fileID: 1854785997}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 10, y: 0, z: -3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.3333335, y: 0, z: -0.11999997}
+  m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 415500083}
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
 --- !u!114 &1854786001
 MonoBehaviour:
@@ -2095,7 +2098,6 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1854786000}
   - {fileID: 1349402458}
   - {fileID: 647681180}
   - {fileID: 1779589829}
