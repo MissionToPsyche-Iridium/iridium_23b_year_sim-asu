@@ -8,6 +8,7 @@ public class OrbTransition : MonoBehaviour
     public GameObject orb;
     public GameObject psycheAsteroid;
     public GameObject potato;
+    public Button backButton;
 
     public GameObject introText;
     public GameObject questionText;
@@ -40,6 +41,7 @@ public class OrbTransition : MonoBehaviour
         infoText.SetActive(false);
         simpleText.SetActive(false);
         disclaimerText.SetActive(false);
+        spinCamera = true; // Move this around to change when the camera should start spinning
         triggerButton.onClick.AddListener(() => StartCoroutine(DoEffect()));
         potato.SetActive(false); // Hide potato at the start
     }
@@ -50,10 +52,11 @@ public class OrbTransition : MonoBehaviour
         triggerButton.gameObject.SetActive(false);
         introText.SetActive(false);
         questionText.SetActive(false);
+        backButton.gameObject.SetActive(false);
 
         StartCoroutine(GrowShrinkOrb());
         StartCoroutine(SpinAndDisappearPsyche());
-        spinCamera = true;
+        
         yield return null;
     }
 
@@ -125,6 +128,7 @@ public class OrbTransition : MonoBehaviour
         infoText.SetActive(true);
         simpleText.SetActive(true);
         disclaimerText.SetActive(true);
+        backButton.gameObject.SetActive(true);
     }
 
     void Update()
