@@ -17,23 +17,48 @@ public class ClickDetector : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 Debug.Log("Clicked on: " + hit.collider.gameObject.name);
-                
+               
+                GameObject psyche = GameObject.Find("Psyche");
+                GameObject f22_raptor = GameObject.Find("Jet");
+                GameObject earth = GameObject.Find("Earth");
 
                 if (hit.collider.gameObject.name == "Psyche")
                 {
-                    OnPsycheClicked();
+                    OnPsycheClicked(psyche, f22_raptor, earth);
                 }
                 else if (hit.collider.gameObject.name == "Jet")
                 {
-                    OnF22Clicked();
+                    OnF22Clicked(psyche, f22_raptor, earth);
                 }
             }
         }
     }
 
-    void OnPsycheClicked()
+    void OnPsycheClicked(GameObject psyche, GameObject f22_raptor, GameObject earth)
     {
         //Debug.Log("Psyche asteroid selected!");
+
+        var psycheOrbit = psyche.GetComponent<OrbitalMotion>();
+        var psychePath = psyche.GetComponent<PathRenderer>();
+
+        var f22Orbit = f22_raptor.GetComponent<OrbitalMotion>();
+        var f22Path = f22_raptor.GetComponent<PathRenderer>();
+
+        var earthOrbit = earth.GetComponent<OrbitalMotion>();
+        var earthPath = earth.GetComponent<PathRenderer>();
+
+        // Enable Psyche orbit and path
+        psycheOrbit.enabled = true;
+        psychePath.enabled = true;
+
+        // Enable F-22 orbit and path
+        f22Orbit.enabled = true;
+        f22Path.enabled = true;
+
+        // Enable Earth orbit and path
+        earthOrbit.enabled = true;
+        earthPath.enabled = true;
+
         if (jet != null)
         {
             jet.SetTrigger("OrbitRace");
@@ -44,7 +69,7 @@ public class ClickDetector : MonoBehaviour
         }
     }
 
-    void OnF22Clicked()
+    void OnF22Clicked(GameObject psyche, GameObject f22_raptor, GameObject earth)
     {
         // Debug.Log("F-22 Raptor selected!");
         if (jet != null)
