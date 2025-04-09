@@ -61,7 +61,7 @@ public class ClickDetector : MonoBehaviour
 
         if (jet != null)
         {
-            jet.SetTrigger("OrbitRace");
+            jet.enabled = false;
         }
         if (cam != null)
         {
@@ -74,7 +74,7 @@ public class ClickDetector : MonoBehaviour
         // Debug.Log("F-22 Raptor selected!");
         if (jet != null)
         {
-            jet.SetTrigger("OrbitRace");
+            jet.enabled = false;
         }
         if (cam != null)
         {

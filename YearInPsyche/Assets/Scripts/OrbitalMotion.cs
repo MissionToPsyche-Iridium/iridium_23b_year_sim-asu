@@ -43,10 +43,10 @@ public class OrbitalMotion : MonoBehaviour
         float z = semiMinorAxis * Mathf.Sin(angleRad);
 
         // Offset the orbit by the focus shift
-        Vector3 orbitPosition = new Vector3(x, 0, z) + (centerObject.position - focusOffset);
-
+        //Vector3 orbitPosition = new Vector3(x, 0, z) + (centerObject.position - focusOffset);
+        Vector3 orbitPosition = new Vector3(x, 0, z) + (centerObject.position);
         // Apply position and face the center
         transform.position = orbitPosition;
-        transform.LookAt(centerObject);
+        //transform.LookAt(centerObject);
     }
 }
