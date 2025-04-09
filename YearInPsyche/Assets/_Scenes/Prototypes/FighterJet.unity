@@ -167,11 +167,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 12.33, y: 2.86, z: 8.79}
   m_Center: {x: 4.94, y: 0.77, z: 0}
---- !u!4 &236839052 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6412079998784874917, guid: 27c429259d8e9fe46988c7650351f1c7, type: 3}
-  m_PrefabInstance: {fileID: 1089980238}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &236839053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,8 +320,6 @@ GameObject:
   - component: {fileID: 904813498}
   - component: {fileID: 904813501}
   - component: {fileID: 904813502}
-  - component: {fileID: 904813503}
-  - component: {fileID: 904813504}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -403,9 +396,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 488.5, y: 0, z: -5.5}
-  m_LocalScale: {x: 400, y: 400, z: 400}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 976418989}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &904813501
@@ -465,48 +459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jet: {fileID: 236839047}
-  cam: {fileID: 904813504}
---- !u!114 &904813503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 904813497}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aecc3b798aa803479761aac57f82299, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obj: {fileID: 236839052}
-  distance: 1
-  rotationSpeed: 50
-  smoothSpeed: 5
-  minDistance: 0.1
-  maxDistance: 3
-  move: 0
---- !u!95 &904813504
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 904813497}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 74c786f1a5ec78842a942aa264a42332, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  cam: {fileID: 0}
 --- !u!1 &976418984
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,6 +472,7 @@ GameObject:
   - component: {fileID: 976418988}
   - component: {fileID: 976418987}
   - component: {fileID: 976418986}
+  - component: {fileID: 976418990}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -596,19 +550,41 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976418984}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3}
-  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.04}
+  m_LocalScale: {x: 0.0002, y: 0.0002, z: 0.0002}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1877634599}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 904813500}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 487.5, y: 3.1}
+  m_AnchoredPosition: {x: 0, y: -0.003}
   m_SizeDelta: {x: 948.4, y: 620.2}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &976418990
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976418984}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7366cb4d6950d5c40ab31d045f83becc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1089980238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -931,7 +907,6 @@ GameObject:
   - component: {fileID: 1877634599}
   - component: {fileID: 1877634601}
   - component: {fileID: 1877634600}
-  - component: {fileID: 1877634602}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -947,16 +922,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877634598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 976418989}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 36.80127, y: -212}
-  m_SizeDelta: {x: 500, y: 50}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -95}
+  m_SizeDelta: {x: 800, y: -500.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1877634600
 MonoBehaviour:
@@ -978,10 +953,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Which is faster? F-22 Raptor or Psyche''s Rotation
+  m_text: 'Which is faster? Click on your choice
 
-    Click on your
-    choice'
+    F-22 Raptor or Psyche''s Rotation'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1008,8 +982,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1060,28 +1034,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877634598}
   m_CullTransparentMesh: 1
---- !u!95 &1877634602
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1877634598}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 66915e9fdea011b4f8cab840b816618d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1888354735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,6 +1121,5 @@ SceneRoots:
   - {fileID: 1665925770}
   - {fileID: 902555585}
   - {fileID: 1089980238}
-  - {fileID: 976418989}
   - {fileID: 1888354738}
   - {fileID: 1432374100}
