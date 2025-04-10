@@ -21,20 +21,22 @@ public class ClickDetector : MonoBehaviour
                 GameObject psyche = GameObject.Find("Psyche");
                 GameObject f22_raptor = GameObject.Find("Jet");
                 GameObject earth = GameObject.Find("Earth");
+                GameObject canvas = GameObject.Find("Canvas");
+                Animator canvasAnimator = canvas.GetComponent<Animator>();
 
                 if (hit.collider.gameObject.name == "Psyche")
                 {
-                    OnPsycheClicked(psyche, f22_raptor, earth);
+                    OnPsycheClicked(psyche, f22_raptor, earth, canvasAnimator);
                 }
                 else if (hit.collider.gameObject.name == "Jet")
                 {
-                    OnF22Clicked(psyche, f22_raptor, earth);
+                    OnF22Clicked(psyche, f22_raptor, earth, canvasAnimator);
                 }
             }
         }
     }
 
-    void OnPsycheClicked(GameObject psyche, GameObject f22_raptor, GameObject earth)
+    void OnPsycheClicked(GameObject psyche, GameObject f22_raptor, GameObject earth, Animator canvasAnimator)
     {
         //Debug.Log("Psyche asteroid selected!");
 
@@ -67,9 +69,13 @@ public class ClickDetector : MonoBehaviour
         {
             cam.enabled = true;
         }
+        if (canvasAnimator != null)
+        {
+            canvasAnimator.SetTrigger("RaceOrbit");
+        }
     }
 
-    void OnF22Clicked(GameObject psyche, GameObject f22_raptor, GameObject earth)
+    void OnF22Clicked(GameObject psyche, GameObject f22_raptor, GameObject earth, Animator canvasAnimator)
     {
         // Debug.Log("F-22 Raptor selected!");
         if (jet != null)
