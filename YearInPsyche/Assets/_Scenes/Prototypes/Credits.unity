@@ -781,6 +781,7 @@ GameObject:
   - component: {fileID: 966214589}
   - component: {fileID: 966214588}
   - component: {fileID: 966214587}
+  - component: {fileID: 966214591}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -872,6 +873,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &966214591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966214586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7de46ecb16307a49befad0a7a71f905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  homeButton: {fileID: 2059409885}
 --- !u!1 &995394225
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,7 +952,11 @@ MonoBehaviour:
     Their usage does not constitute an official endorsement, either expressed or
     implied, by Arizona State University or National Aeronautics and Space Administration.
     The content is solely the responsibility of the authors and does not necessarily
-    represent the official views of ASU or NASA."
+    represent the official views of ASU or NASA.\n\nDisclaimer: Solar system model
+    and planets are not to scale and the skybox does not accurately represent the
+    stars locations. Additionaly, a rotation speed of 1\xB0/sec was used for Psyche
+    as Psyche's true rotation speed is too slow for most users to notice. Psyche's
+    true rotation speed is around 0.024\xB0/sec."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1425,10 +1443,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "     Models:\n\nPsyche Asteroid - \nPotato - Koji Noshita from Sketchfab\nRoast
-    Chicken - daidaiaoko from SketchFab\nSpace SkyBox - \n\n\n     Sounds:\n\nBackground
-    music composed by Tiago Behar\n\n\n     Made By:\n\nNASA and ASU - Year in Psyche
-    - Team 2\n\r\n     Team Members: \n \nAdem Cufurovic\nCamelia Ariana Binti Ahmad
-    Nasri\nNigel Rajaratnam\nSuhaas Godavarthy\nTiago Behar\r\n\n\n"
+    Chicken - daidaiaoko from SketchFab\nSpace SkyBox - Geoff Dallimore from Unity
+    asset store\n\n\n     Sounds:\n\nBackground music composed by Tiago Behar\n\n\n    
+    Made By:\n\nNASA and ASU - Year in Psyche - Team 2\n\r\n     Team Members: \n
+    \nAdem Cufurovic\nCamelia Ariana Binti Ahmad Nasri\nNigel Rajaratnam\nSuhaas
+    Godavarthy\nTiago Behar\r\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
