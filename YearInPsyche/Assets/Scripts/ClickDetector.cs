@@ -1,11 +1,14 @@
 using UnityEngine;
 using System;
+using System.Runtime.InteropServices;
+using System.Collections;
+using TMPro;
+
 //using System.Diagnostics;
 
 public class ClickDetector : MonoBehaviour
 {
     public Animator jet;
-    public Animator cam;
 
     void Update()
     {
@@ -21,24 +24,31 @@ public class ClickDetector : MonoBehaviour
                 GameObject psyche = GameObject.Find("Psyche");
                 GameObject f22_raptor = GameObject.Find("Jet");
                 GameObject earth = GameObject.Find("Earth");
-                GameObject canvas = GameObject.Find("Canvas");
-                Animator canvasAnimator = canvas.GetComponent<Animator>();
-
+                //Canvas canvas = GetComponent<Canvas>();
+                Canvas canvas = GetComponentInChildren<Canvas>();
+                TextMeshProUGUI text = canvas.GetComponentInChildren<TextMeshProUGUI>();
                 if (hit.collider.gameObject.name == "Psyche")
                 {
-                    OnPsycheClicked(psyche, f22_raptor, earth, canvasAnimator);
+                    OnPsycheClicked(psyche, f22_raptor, earth, canvas, text);
                 }
                 else if (hit.collider.gameObject.name == "Jet")
                 {
-                    OnF22Clicked(psyche, f22_raptor, earth, canvasAnimator);
+                    OnF22Clicked(psyche, f22_raptor, earth,canvas, text);
                 }
             }
         }
     }
 
-    void OnPsycheClicked(GameObject psyche, GameObject f22_raptor, GameObject earth, Animator canvasAnimator)
+    String txt = "The Raptor F-22’s top speed goes over a staggering Mach 2.0 with afterburners engaged.";
+    String txt2 = "That translates to a mind-blowing 0.3403 km/s!";
+    String txt3 = "To put that into perspective, the speed of sound is roughly Mach 1.0, meaning the F-22 can cruise at more than twice the speed of sound!";
+    String txt4 "However... Psyche's orbital speed average about 17.34 km/s. Travelling faster than sound up till 6 times in space!";
+    void OnPsycheClicked(GameObject psyche, GameObject f22_raptor, GameObject earth, Canvas canvas, TextMeshProUGUI text)
     {
         //Debug.Log("Psyche asteroid selected!");
+        canvas.gameObject.SetActive(false);
+        GetComponent<Animator>().enabled = true;
+        f22_raptor.GetComponent<Animator>().enabled = false;
 
         var psycheOrbit = psyche.GetComponent<OrbitalMotion>();
         var psychePath = psyche.GetComponent<PathRenderer>();
@@ -61,30 +71,83 @@ public class ClickDetector : MonoBehaviour
         earthOrbit.enabled = true;
         earthPath.enabled = true;
 
-        if (jet != null)
-        {
-            jet.enabled = false;
-        }
-        if (cam != null)
-        {
-            cam.enabled = true;
-        }
-        if (canvasAnimator != null)
-        {
-            canvasAnimator.SetTrigger("RaceOrbit");
-        }
+        StartCoroutine(textDisplay(canvas, text));
+
     }
 
-    void OnF22Clicked(GameObject psyche, GameObject f22_raptor, GameObject earth, Animator canvasAnimator)
+    void OnF22Clicked(GameObject psyche, GameObject f22_raptor, GameObject earth, Canvas canvas, TextMeshProUGUI text)
     {
-        // Debug.Log("F-22 Raptor selected!");
-        if (jet != null)
-        {
-            jet.enabled = false;
-        }
-        if (cam != null)
-        {
-            cam.enabled = true;
-        }
+        //Debug.Log("Psyche asteroid selected!");
+        canvas.gameObject.SetActive(false);
+        GetComponent<Animator>().enabled = true;
+
+        f22_raptor.GetComponent<Animator>().enabled = false;
+
+        var psycheOrbit = psyche.GetComponent<OrbitalMotion>();
+        var psychePath = psyche.GetComponent<PathRenderer>();
+
+        var f22Orbit = f22_raptor.GetComponent<OrbitalMotion>();
+        var f22Path = f22_raptor.GetComponent<PathRenderer>();
+
+        var earthOrbit = earth.GetComponent<OrbitalMotion>();
+        var earthPath = earth.GetComponent<PathRenderer>();
+
+        // Enable Psyche orbit and path
+        psycheOrbit.enabled = true;
+        psychePath.enabled = true;
+
+        // Enable F-22 orbit and path
+        f22Orbit.enabled = true;
+        f22Path.enabled = true;
+
+        // Enable Earth orbit and path
+        earthOrbit.enabled = true;
+        earthPath.enabled = true;
+
+        StartCoroutine(textDisplay(canvas, text));
+
+
     }
+
+
+
+    IEnumerator textDisplay(Canvas canvas, TextMeshProUGUI text)
+    {
+        RectTransform rectTransform = text.GetComponent<RectTransform>();
+
+        // Set text alignment to top-right
+        text.alignment = TextAlignmentOptions.TopRight;
+
+        text.text = txt;
+        canvas.gameObject.SetActive(true);
+        yield return new WaitForSeconds(10f);
+
+        text.text = "";
+        //canvas.gameObject.SetActive(false);
+        yield return new WaitForSeconds(2f);
+
+        text.text = txt2;
+        //canvas.gameObject.SetActive(true);
+        yield return new WaitForSeconds(5f);
+
+        text.text = "";
+        //canvas.gameObject.SetActive(false);
+        yield return new WaitForSeconds(2f);
+
+        text.text = txt3;
+        //canvas.gameObject.SetActive(true);
+        yield return new WaitForSeconds(8f);
+
+        text.text = "";
+        //canvas.gameObject.SetActive(false);
+        yield return new WaitForSeconds(2f);
+
+        text.text = txt4;
+        //canvas.gameObject.SetActive(true);
+        yield return new WaitForSeconds(5f);
+
+        canvas.gameObject.SetActive(false);
     }
+
+
+}
