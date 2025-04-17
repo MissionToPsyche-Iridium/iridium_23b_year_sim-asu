@@ -39,10 +39,10 @@ public class ClickDetector : MonoBehaviour
         }
     }
 
-    String txt = "The Raptor F-22’s top speed goes over a staggering Mach 2.0 with afterburners engaged.";
-    String txt2 = "That translates to a mind-blowing 0.3403 km/s!";
-    String txt3 = "To put that into perspective, the speed of sound is roughly Mach 1.0, meaning the F-22 can cruise at more than twice the speed of sound!";
-    String txt4 "However... Psyche's orbital speed average about 17.34 km/s. Travelling faster than sound up till 6 times in space!";
+    String txt = "The Raptor F-22’s top speed goes over a staggering \nMach 2.0 with afterburners engaged.";
+    String txt2 = "That translates to a mind-blowing 340 m/s.";
+    String txt3 = "However, Psyche's orbital speed average about 17.34 km/s.\nTravelling faster than sound up till 6 times in space!";
+
     void OnPsycheClicked(GameObject psyche, GameObject f22_raptor, GameObject earth, Canvas canvas, TextMeshProUGUI text)
     {
         //Debug.Log("Psyche asteroid selected!");
@@ -105,8 +105,6 @@ public class ClickDetector : MonoBehaviour
         earthPath.enabled = true;
 
         StartCoroutine(textDisplay(canvas, text));
-
-
     }
 
 
@@ -138,15 +136,10 @@ public class ClickDetector : MonoBehaviour
         //canvas.gameObject.SetActive(true);
         yield return new WaitForSeconds(8f);
 
-        text.text = "";
+
         //canvas.gameObject.SetActive(false);
-        yield return new WaitForSeconds(2f);
-
-        text.text = txt4;
-        //canvas.gameObject.SetActive(true);
-        yield return new WaitForSeconds(5f);
-
-        canvas.gameObject.SetActive(false);
+        text.text = "";
+        GetComponent<Animator>().SetTrigger("OrbitRace");
     }
 
 
