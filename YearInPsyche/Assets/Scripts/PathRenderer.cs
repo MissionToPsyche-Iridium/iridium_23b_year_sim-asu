@@ -1,64 +1,112 @@
-using System;
-//using System.Diagnostics;
-
 //using System.Diagnostics;
 using UnityEngine;
+using static System.Net.Mime.MediaTypeNames;
 
+[ExecuteAlways]
+[RequireComponent(typeof(LineRenderer))]
 public class PathRenderer : MonoBehaviour
 {
-    public float pointDistance = 0.1f;        // Minimum distance between path points
-    public Color lineColor = Color.white;     // Line color
-    public Transform centerObject;            // Sun (center of the orbit)
+    public float pointDistance = 0.1f;
+    public Color lineColor = new Color(1f, 1f, 1f, 0.5f);
+    public Transform centerObject;
+
     private LineRenderer lineRenderer;
     private Vector3 previousPosition;
     private bool isFirstFrame = true;
 
-    void Start()
+    void OnEnable()
     {
-        // Create the material for the line renderer
-        Material pathMaterial = new Material(Shader.Find("Unlit/Color"));
-        pathMaterial.color = lineColor;
+        lineRenderer = GetComponent<LineRenderer>();
+        SetupLineRenderer();
+    }
 
-        // Add LineRenderer component to the object
-        lineRenderer = gameObject.AddComponent<LineRenderer>();
-        lineRenderer.material = pathMaterial;
-        lineRenderer.positionCount = 0; // Initially no points
-        lineRenderer.startWidth = 0.2f; // Set line width
-        lineRenderer.endWidth = 0.2f;
-        lineRenderer.useWorldSpace = true; // Use world space for correct position tracking
-
-        // Make sure there's a center object (the Sun)
-        if (centerObject == null)
+    void OnValidate()
+    {
+        if (lineRenderer != null)
         {
-            Debug.LogError("No center object (Sun) assigned for orbit path!");
+            UpdateColor();
         }
+    }
+
+    void SetupLineRenderer()
+    {
+        if (lineRenderer == null)
+            lineRenderer = GetComponent<LineRenderer>();
+
+        lineRenderer.startWidth = 0.2f;
+        lineRenderer.endWidth = 0.2f;
+        lineRenderer.useWorldSpace = true;
+        lineRenderer.positionCount = 0;
+
+        Shader shader = Shader.Find("Legacy Shaders/Particles/Alpha Blended");
+        if (shader == null)
+        {
+            Debug.LogError("Shader not found! Use Legacy Shaders/Particles/Alpha Blended.");
+            return;
+        }
+
+        Material mat = new Material(shader);
+        mat.color = lineColor;
+        lineRenderer.material = mat;
+
+        UpdateColor();
+
+        previousPosition = GetPathPosition();
+        isFirstFrame = true;
+    }
+
+    void UpdateColor()
+    {
+        if (lineRenderer != null)
+        {
+            lineRenderer.startColor = lineColor;
+            lineRenderer.endColor = lineColor;
+            if (lineRenderer.material != null)
+                lineRenderer.material.color = lineColor;
+        }
+    }
+
+    // You can center this path relative to centerObject if desired
+    Vector3 GetPathPosition()
+    {
+        // Option 1: Relative to orbiting object's position (default)
+        return transform.position;
+
+        // Option 2: Relative to centerObject
+        // return transform.position - centerObject.position;
     }
 
     void Update()
     {
-        // If no center object, exit
         if (centerObject == null) return;
 
-        // If it's the first frame, add the initial position
+        UpdateColor();
+
+        Vector3 currentPos = GetPathPosition();
+
+        if (!UnityEngine.Application.isPlaying)
+        {
+            lineRenderer.positionCount = 1;
+            lineRenderer.SetPosition(0, currentPos);
+            return;
+        }
+
         if (isFirstFrame)
         {
             lineRenderer.positionCount = 1;
-            lineRenderer.SetPosition(0, transform.position);
-            previousPosition = transform.position;
+            lineRenderer.SetPosition(0, currentPos);
+            previousPosition = currentPos;
             isFirstFrame = false;
         }
         else
         {
-            // Check if the object has moved beyond the pointDistance threshold
-            if (Vector3.Distance(transform.position, previousPosition) >= pointDistance)
+            if (Vector3.Distance(currentPos, previousPosition) >= pointDistance)
             {
-                // Increase the position count (add a new point to the path)
-                lineRenderer.positionCount += 1;
-                lineRenderer.SetPosition(lineRenderer.positionCount - 1, transform.position);
-                previousPosition = transform.position; // Update the previous position
+                int nextIndex = lineRenderer.positionCount;
+                lineRenderer.positionCount = nextIndex + 1;
+                lineRenderer.SetPosition(nextIndex, currentPos);
+                previousPosition = currentPos;
             }
         }
-
-
     }
 }

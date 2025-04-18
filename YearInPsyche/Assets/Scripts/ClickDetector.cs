@@ -8,7 +8,6 @@ using TMPro;
 
 public class ClickDetector : MonoBehaviour
 {
-    public Animator jet;
 
     void Update()
     {
@@ -33,7 +32,7 @@ public class ClickDetector : MonoBehaviour
                 }
                 else if (hit.collider.gameObject.name == "Jet")
                 {
-                    OnF22Clicked(psyche, f22_raptor, earth,canvas, text);
+                    OnF22Clicked(psyche, f22_raptor, earth, canvas, text);
                 }
             }
         }
@@ -55,6 +54,7 @@ public class ClickDetector : MonoBehaviour
 
         var f22Orbit = f22_raptor.GetComponent<OrbitalMotion>();
         var f22Path = f22_raptor.GetComponent<PathRenderer>();
+        var f22Line = f22_raptor.GetComponent<LineRenderer>();
 
         var earthOrbit = earth.GetComponent<OrbitalMotion>();
         var earthPath = earth.GetComponent<PathRenderer>();
@@ -66,6 +66,7 @@ public class ClickDetector : MonoBehaviour
         // Enable F-22 orbit and path
         f22Orbit.enabled = true;
         f22Path.enabled = true;
+        f22Line.enabled = true;
 
         // Enable Earth orbit and path
         earthOrbit.enabled = true;
@@ -88,6 +89,8 @@ public class ClickDetector : MonoBehaviour
 
         var f22Orbit = f22_raptor.GetComponent<OrbitalMotion>();
         var f22Path = f22_raptor.GetComponent<PathRenderer>();
+        var f22Line = f22_raptor.GetComponent<LineRenderer>();
+
 
         var earthOrbit = earth.GetComponent<OrbitalMotion>();
         var earthPath = earth.GetComponent<PathRenderer>();
@@ -99,6 +102,7 @@ public class ClickDetector : MonoBehaviour
         // Enable F-22 orbit and path
         f22Orbit.enabled = true;
         f22Path.enabled = true;
+        f22Line.enabled = true;
 
         // Enable Earth orbit and path
         earthOrbit.enabled = true;
@@ -117,7 +121,7 @@ public class ClickDetector : MonoBehaviour
         text.alignment = TextAlignmentOptions.TopRight;
 
         text.text = txt;
-        canvas.gameObject.SetActive(true);
+        canvas.gameObject.SetActive(true);  // 5 seconds into the animatio
         yield return new WaitForSeconds(10f);
 
         text.text = "";
@@ -133,13 +137,12 @@ public class ClickDetector : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         text.text = txt3;
+        GetComponent<Animator>().SetTrigger("OrbitRace");
         //canvas.gameObject.SetActive(true);
-        yield return new WaitForSeconds(8f);
-
+        yield return new WaitForSeconds(5f);
 
         //canvas.gameObject.SetActive(false);
         text.text = "";
-        GetComponent<Animator>().SetTrigger("OrbitRace");
     }
 
 
