@@ -38,9 +38,9 @@ public class ClickDetector : MonoBehaviour
         }
     }
 
-    String txt = "The Raptor F-22’s top speed goes over a staggering \nMach 2.0 with afterburners engaged.";
+    String txt = "The Raptor F-22’s top speed goes over a staggering Mach 2.0 with afterburners engaged.";
     String txt2 = "That translates to a mind-blowing 340 m/s.";
-    String txt3 = "However, Psyche's orbital speed average about 17.34 km/s.\nTravelling faster than sound up till 6 times in space!";
+    String txt3 = "However, Psyche's orbital speed average about 17.34 km/s. Travelling faster than sound up till 6 times in space!";
 
     void OnPsycheClicked(GameObject psyche, GameObject f22_raptor, GameObject earth, Canvas canvas, TextMeshProUGUI text)
     {
@@ -51,6 +51,7 @@ public class ClickDetector : MonoBehaviour
 
         var psycheOrbit = psyche.GetComponent<OrbitalMotion>();
         var psychePath = psyche.GetComponent<PathRenderer>();
+        var psycheLine = psyche.GetComponent<LineRenderer>();
 
         var f22Orbit = f22_raptor.GetComponent<OrbitalMotion>();
         var f22Path = f22_raptor.GetComponent<PathRenderer>();
@@ -58,6 +59,8 @@ public class ClickDetector : MonoBehaviour
 
         var earthOrbit = earth.GetComponent<OrbitalMotion>();
         var earthPath = earth.GetComponent<PathRenderer>();
+        var earthLine = earth.GetComponent<LineRenderer>();
+
 
         // Enable Psyche orbit and path
         psycheOrbit.enabled = true;
@@ -72,7 +75,7 @@ public class ClickDetector : MonoBehaviour
         earthOrbit.enabled = true;
         earthPath.enabled = true;
 
-        StartCoroutine(textDisplay(canvas, text));
+        StartCoroutine(textDisplay(canvas, text, earthLine, psycheLine));
 
     }
 
@@ -86,6 +89,7 @@ public class ClickDetector : MonoBehaviour
 
         var psycheOrbit = psyche.GetComponent<OrbitalMotion>();
         var psychePath = psyche.GetComponent<PathRenderer>();
+        var psycheLine = psyche.GetComponent<LineRenderer>();
 
         var f22Orbit = f22_raptor.GetComponent<OrbitalMotion>();
         var f22Path = f22_raptor.GetComponent<PathRenderer>();
@@ -94,6 +98,7 @@ public class ClickDetector : MonoBehaviour
 
         var earthOrbit = earth.GetComponent<OrbitalMotion>();
         var earthPath = earth.GetComponent<PathRenderer>();
+        var earthLine = earth.GetComponent<LineRenderer>();
 
         // Enable Psyche orbit and path
         psycheOrbit.enabled = true;
@@ -108,12 +113,12 @@ public class ClickDetector : MonoBehaviour
         earthOrbit.enabled = true;
         earthPath.enabled = true;
 
-        StartCoroutine(textDisplay(canvas, text));
+        StartCoroutine(textDisplay(canvas, text, earthLine, psycheLine));
     }
 
 
 
-    IEnumerator textDisplay(Canvas canvas, TextMeshProUGUI text)
+    IEnumerator textDisplay(Canvas canvas, TextMeshProUGUI text, LineRenderer earth, LineRenderer psyche)
     {
         RectTransform rectTransform = text.GetComponent<RectTransform>();
 
@@ -139,10 +144,16 @@ public class ClickDetector : MonoBehaviour
         text.text = txt3;
         GetComponent<Animator>().SetTrigger("OrbitRace");
         //canvas.gameObject.SetActive(true);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(8f);
 
         //canvas.gameObject.SetActive(false);
         text.text = "";
+        yield return new WaitForSeconds(3f);
+
+        earth.startWidth = 2f;
+        psyche.endWidth = 2f;
+
+
     }
 
 
