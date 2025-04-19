@@ -174,7 +174,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236839046}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 198647ccedddfd140a7789ae5c5b777e, type: 3}
   m_Name: 
@@ -182,6 +182,7 @@ MonoBehaviour:
   pointDistance: 0.1
   lineColor: {r: 0.43445972, g: 0.4190175, b: 0.4415095, a: 0.57254905}
   centerObject: {fileID: 449840231}
+  offset: 0
 --- !u!114 &236839056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,7 +223,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 702582172}
+  - {fileID: 544574442}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -508,6 +509,7 @@ MonoBehaviour:
   pointDistance: 0.1
   lineColor: {r: 0.6523381, g: 0.118867874, b: 1, a: 0.6431373}
   centerObject: {fileID: 449840231}
+  offset: 0
 --- !u!120 &470797487
 LineRenderer:
   serializedVersion: 2
@@ -906,6 +908,7 @@ MonoBehaviour:
   pointDistance: 0.1
   lineColor: {r: 0.43445972, g: 0.4190175, b: 0.4415095, a: 0.57254905}
   centerObject: {fileID: 449840231}
+  offset: 0
 --- !u!65 &487903189
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -965,41 +968,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!21 &549643486
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Legacy Shaders/Particles/Alpha Blended (Instance)
-  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _InvFade: 1
-    m_Colors:
-    - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
---- !u!21 &702582172
+--- !u!21 &544574442
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -1154,7 +1123,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 549643486}
+  - {fileID: 1987995109}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1176,7 +1145,7 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 488, y: 0, z: 0}
+  - {x: 489.5, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -1185,7 +1154,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.2
+        value: 0.1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1194,7 +1163,7 @@ LineRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.2
+        value: 0.1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1276,6 +1245,7 @@ MonoBehaviour:
   pointDistance: 0.1
   lineColor: {r: 0.73640937, g: 0.5113207, b: 1, a: 0.7058824}
   centerObject: {fileID: 449840231}
+  offset: 1.5
 --- !u!135 &723374069
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2069,6 +2039,7 @@ MonoBehaviour:
   pointDistance: 0.1
   lineColor: {r: 0.43445972, g: 0.4190175, b: 0.4415095, a: 0.57254905}
   centerObject: {fileID: 449840231}
+  offset: 0
 --- !u!65 &1208098837
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2351,6 +2322,7 @@ MonoBehaviour:
   pointDistance: 0.1
   lineColor: {r: 0.09259521, g: 0.9622642, b: 0.8251126, a: 0.60784316}
   centerObject: {fileID: 449840231}
+  offset: 0
 --- !u!114 &1870602984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2794,6 +2766,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1987995109
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Legacy Shaders/Particles/Alpha Blended (Instance)
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _InvFade: 1
+    m_Colors:
+    - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

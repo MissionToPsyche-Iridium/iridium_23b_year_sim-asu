@@ -9,6 +9,7 @@ public class PathRenderer : MonoBehaviour
     public float pointDistance = 0.1f;
     public Color lineColor = new Color(1f, 1f, 1f, 0.5f);
     public Transform centerObject;
+    public float offset = 0.0f;
 
     private LineRenderer lineRenderer;
     private Vector3 previousPosition;
@@ -33,8 +34,8 @@ public class PathRenderer : MonoBehaviour
         if (lineRenderer == null)
             lineRenderer = GetComponent<LineRenderer>();
 
-        lineRenderer.startWidth = 0.2f;
-        lineRenderer.endWidth = 0.2f;
+        lineRenderer.startWidth = 0.1f;
+        lineRenderer.endWidth = 0.1f;
         lineRenderer.useWorldSpace = true;
         lineRenderer.positionCount = 0;
 
@@ -66,14 +67,11 @@ public class PathRenderer : MonoBehaviour
         }
     }
 
-    // You can center this path relative to centerObject if desired
     Vector3 GetPathPosition()
     {
-        // Option 1: Relative to orbiting object's position (default)
-        return transform.position;
-
-        // Option 2: Relative to centerObject
-        // return transform.position - centerObject.position;
+        Vector3 pos = transform.position;
+        pos.x += offset;
+        return pos;
     }
 
     void Update()

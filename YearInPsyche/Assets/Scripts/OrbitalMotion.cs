@@ -6,9 +6,9 @@ using static System.Net.Mime.MediaTypeNames;
 public class OrbitalMotion : MonoBehaviour
 {
     public Transform centerObject;
-    public float semiMajorAxis = 10f;              // Longest radius of the ellipse
-    public float orbitalPeriod = 10f;              // Time to complete one orbit (in seconds)
-    public float orbitalEccentricity = 0.1f;       // 0 = circle, closer to 1 = more elliptical
+    public float semiMajorAxis = 10f;              
+    public float orbitalPeriod = 10f;             
+    public float orbitalEccentricity = 0.1f;       
 
     private float currentAngle = 0f;
     private float orbitalVelocity;
