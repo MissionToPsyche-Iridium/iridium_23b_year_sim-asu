@@ -2,7 +2,7 @@
 using UnityEngine;
 using static System.Net.Mime.MediaTypeNames;
 
-[ExecuteAlways] // Run in Edit Mode too
+//[ExecuteAlways] // Run in Edit Mode too
 public class OrbitalMotion : MonoBehaviour
 {
     public Transform centerObject;
