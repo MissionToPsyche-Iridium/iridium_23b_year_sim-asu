@@ -152,7 +152,7 @@ public class ClickDetector : MonoBehaviour
         //canvas.gameObject.SetActive(false);
         text.text = "";
         
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         earth.startWidth = 2f;
         psyche.endWidth = 2f;
         text.alignment = TextAlignmentOptions.TopLeft;
