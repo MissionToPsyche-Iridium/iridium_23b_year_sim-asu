@@ -83,31 +83,31 @@ public class MenuController : MonoBehaviour
     }
 
 
-    IEnumerator StartQuizSequence()
-    {
-        menuCanvas.SetActive(false);
-        interactiveCanvas.SetActive(true);
+    //IEnumerator StartQuizSequence()
+    //{
+    //    menuCanvas.SetActive(false);
+    //    interactiveCanvas.SetActive(true);
 
-        for (currentQuizIndex = 1; currentQuizIndex <= quizzes; currentQuizIndex++)
-        {
-            string quizScene = $"Quiz Question {currentQuizIndex}";
-            SceneManager.LoadScene(quizScene, LoadSceneMode.Additive);
+    //    for (currentQuizIndex = 1; currentQuizIndex <= quizzes; currentQuizIndex++)
+    //    {
+    //        string quizScene = $"Quiz Question {currentQuizIndex}";
+    //        SceneManager.LoadScene(quizScene, LoadSceneMode.Additive);
 
-            // Wait for the quiz to be completed before proceeding
-            yield return new WaitUntil(() => QuizCompleted());
+    //        // Wait for the quiz to be completed before proceeding
+    //        yield return new WaitUntil(() => QuizCompleted());
 
-            SceneManager.UnloadSceneAsync(quizScene);
-        }
+    //        SceneManager.UnloadSceneAsync(quizScene);
+    //    }
 
-        // Return to menu after completing all quizzes
-        menuCanvas.SetActive(true);
-        interactiveCanvas.SetActive(false);
-    }
+    //    // Return to menu after completing all quizzes
+    //    menuCanvas.SetActive(true);
+    //    interactiveCanvas.SetActive(false);
+    //}
 
-    bool QuizCompleted()
-    {
-        // Implement logic to check if a quiz is completed
-        // This could be based on a button click, a score system, or a message from the quiz scene
-        return Input.GetKeyDown(KeyCode.Space); // Temporary test: press Space to continue
-    }
+    //bool QuizCompleted()
+    //{
+    //    // Implement logic to check if a quiz is completed
+    //    // This could be based on a button click, a score system, or a message from the quiz scene
+    //    return Input.GetKeyDown(KeyCode.Space); // Temporary test: press Space to continue
+    //}
 }

@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class BackAndNextButtons : MonoBehaviour
 {
-    public int minIndex = 1;
+    public int minIndex = 0;
     public int maxIndex = 15;
     public void GoBack()
     {
