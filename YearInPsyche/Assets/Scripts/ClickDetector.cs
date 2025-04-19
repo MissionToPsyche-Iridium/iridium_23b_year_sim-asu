@@ -38,9 +38,7 @@ public class ClickDetector : MonoBehaviour
         }
     }
 
-    String txt = "The Raptor F-22’s top speed goes over a staggering Mach 2.0 with afterburners engaged.";
-    String txt2 = "That translates to a mind-blowing 340 m/s.";
-    String txt3 = "However, Psyche's orbital speed average about 17.34 km/s. Travelling faster than sound up till 6 times in space!";
+   
 
     void OnPsycheClicked(GameObject psyche, GameObject f22_raptor, GameObject earth, Canvas canvas, TextMeshProUGUI text)
     {
@@ -116,6 +114,11 @@ public class ClickDetector : MonoBehaviour
         StartCoroutine(textDisplay(canvas, text, earthLine, psycheLine));
     }
 
+    String txt = "The Raptor F-22 reaches astonishing speeds exceeding Mach 2.0 with afterburners engaged,";
+    String txt2 = "That’s equivalent to an impressive 340 meters per second.";
+    String txt3 = "Yet, Psyche’s average orbital speed is around 17.34 kilometers per second — over six times the speed of sound in space.";
+    String txt4 = "Even Earth moves faster, orbiting the Sun at approximately 29.78 kilometers per second — about 70% faster than Psyche.";
+    String txt5 = "So, even if you come last in a race on Earth, take comfort: you’re still hurtling through space faster than an asteroid.";
 
 
     IEnumerator textDisplay(Canvas canvas, TextMeshProUGUI text, LineRenderer earth, LineRenderer psyche)
@@ -124,7 +127,7 @@ public class ClickDetector : MonoBehaviour
 
         // Set text alignment to top-right
         text.alignment = TextAlignmentOptions.TopRight;
-
+        text.fontSize = 10f;
         text.text = txt;
         canvas.gameObject.SetActive(true);  // 5 seconds into the animatio
         yield return new WaitForSeconds(10f);
@@ -144,15 +147,25 @@ public class ClickDetector : MonoBehaviour
         text.text = txt3;
         GetComponent<Animator>().SetTrigger("OrbitRace");
         //canvas.gameObject.SetActive(true);
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(10f);
 
         //canvas.gameObject.SetActive(false);
         text.text = "";
-        yield return new WaitForSeconds(3f);
-
         earth.startWidth = 2f;
         psyche.endWidth = 2f;
+        yield return new WaitForSeconds(2f);
 
+        text.alignment = TextAlignmentOptions.TopLeft;
+
+        text.text = txt4;
+        yield return new WaitForSeconds(10f);
+        text.text = "";
+        yield return new WaitForSeconds(2f);
+
+        text.text = txt5;
+        yield return new WaitForSeconds(10f);
+        text.text = "";
+        yield return new WaitForSeconds(2f);
 
     }
 
