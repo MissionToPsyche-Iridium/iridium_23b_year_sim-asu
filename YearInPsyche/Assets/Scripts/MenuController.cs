@@ -50,6 +50,7 @@ public class MenuController : MonoBehaviour
                 break;
             case 2:
                 // Go through all the Quiz questions
+                UnityEngine.Debug.Log("Quiz button clicked");
                 SceneManager.LoadScene("Quiz Question 1");
                 break;
             case 3:
