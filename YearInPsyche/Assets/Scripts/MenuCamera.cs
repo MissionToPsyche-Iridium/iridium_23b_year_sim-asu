@@ -14,6 +14,13 @@ public class MenuCamera : MonoBehaviour
     {
         if (hasPlayedIntro)
         {
+            cameraAnimator.enabled = false;
+
+            GameObject menu = GameObject.Find("Main Camera")?.transform.Find("Menu")?.gameObject;
+            if (menu != null)
+            {
+                menu.SetActive(true);
+            }
             transform.position = new Vector3(1132f, 0f, -5.5f);
         }
     }

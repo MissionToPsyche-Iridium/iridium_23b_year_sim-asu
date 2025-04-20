@@ -37,10 +37,9 @@ public class OrbitalMotion : MonoBehaviour
 
         orbitalVelocity = 360f / orbitalPeriod;
 
-        // Calculate the semi-minor axis: b² = a²(1 - e²)
+        //  b² = a²(1 - e²)
         semiMinorAxis = semiMajorAxis * Mathf.Sqrt(1 - orbitalEccentricity * orbitalEccentricity);
 
-        // Calculate how far the ellipse is offset from the center
         focusOffset = new Vector3(semiMajorAxis * orbitalEccentricity, 0, 0);
 
         lastEditorTime = (float)UnityEditor.EditorApplication.timeSinceStartup;
@@ -52,7 +51,6 @@ public class OrbitalMotion : MonoBehaviour
 
         float deltaTime;
 
-        // Use real delta time if playing, else use Editor time
         if (UnityEngine.Application.isPlaying)
         {
             deltaTime = Time.deltaTime;

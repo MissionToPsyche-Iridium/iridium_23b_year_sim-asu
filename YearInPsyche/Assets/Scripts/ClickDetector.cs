@@ -1,173 +1,118 @@
 using UnityEngine;
-using System;
-using System.Runtime.InteropServices;
-using System.Collections;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
-
-//using System.Diagnostics;
+using System.Collections;
+using System.Diagnostics;
 
 public class ClickDetector : MonoBehaviour
 {
+    private GameObject psyche, f22_raptor, earth;
+    private Canvas canvas;
+    private Button homeButton;
+    private TextMeshProUGUI text;
+
+    private void Start()
+    {
+        psyche = GameObject.Find("Psyche");
+        f22_raptor = GameObject.Find("Jet");
+        earth = GameObject.Find("Earth");
+
+        canvas = GetComponentInChildren<Canvas>(true);
+        text = canvas.GetComponentInChildren<TextMeshProUGUI>();
+        homeButton = canvas.GetComponentInChildren<Button>();
+
+        homeButton.onClick.AddListener(() =>
+        {
+            if (SceneManager.GetActiveScene().buildIndex != 0)
+            {
+                SceneManager.LoadScene(0);
+            }
+        });
+    }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Left-click
+        if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                Debug.Log("Clicked on: " + hit.collider.gameObject.name);
-               
-                GameObject psyche = GameObject.Find("Psyche");
-                GameObject f22_raptor = GameObject.Find("Jet");
-                GameObject earth = GameObject.Find("Earth");
-                //Canvas canvas = GetComponent<Canvas>();
-                Canvas canvas = GetComponentInChildren<Canvas>();
-                TextMeshProUGUI text = canvas.GetComponentInChildren<TextMeshProUGUI>();
+                //Debug.Log("Clicked on: " + hit.collider.gameObject.name);
+                text.text = "";
                 if (hit.collider.gameObject.name == "Psyche")
                 {
-                    OnPsycheClicked(psyche, f22_raptor, earth, canvas, text);
+                    OnObjectClicked();
                 }
                 else if (hit.collider.gameObject.name == "Jet")
                 {
-                    OnF22Clicked(psyche, f22_raptor, earth, canvas, text);
+                    OnObjectClicked();
                 }
             }
         }
     }
 
-   
-
-    void OnPsycheClicked(GameObject psyche, GameObject f22_raptor, GameObject earth, Canvas canvas, TextMeshProUGUI text)
+    void OnObjectClicked()
     {
-        //Debug.Log("Psyche asteroid selected!");
-        canvas.gameObject.SetActive(false);
+        //canvas.gameObject.SetActive(false);
         GetComponent<Animator>().enabled = true;
         f22_raptor.GetComponent<Animator>().enabled = false;
 
-        var psycheOrbit = psyche.GetComponent<OrbitalMotion>();
-        var psychePath = psyche.GetComponent<PathRenderer>();
-        var psycheLine = psyche.GetComponent<LineRenderer>();
+        ToggleOrbit(psyche, true);
+        ToggleOrbit(f22_raptor, true);
+        ToggleOrbit(earth, true);
 
-        var f22Orbit = f22_raptor.GetComponent<OrbitalMotion>();
-        var f22Path = f22_raptor.GetComponent<PathRenderer>();
-        var f22Line = f22_raptor.GetComponent<LineRenderer>();
+        LineRenderer earthLine = earth.GetComponent<LineRenderer>();
+        LineRenderer psycheLine = psyche.GetComponent<LineRenderer>();
 
-        var earthOrbit = earth.GetComponent<OrbitalMotion>();
-        var earthPath = earth.GetComponent<PathRenderer>();
-        var earthLine = earth.GetComponent<LineRenderer>();
-
-
-        // Enable Psyche orbit and path
-        psycheOrbit.enabled = true;
-        psychePath.enabled = true;
-
-        // Enable F-22 orbit and path
-        f22Orbit.enabled = true;
-        f22Path.enabled = true;
-        f22Line.enabled = true;
-
-        // Enable Earth orbit and path
-        earthOrbit.enabled = true;
-        earthPath.enabled = true;
-
-        StartCoroutine(textDisplay(canvas, text, earthLine, psycheLine));
-
+        StartCoroutine(PlayNarrationSequence(earthLine, psycheLine));
     }
 
-    void OnF22Clicked(GameObject psyche, GameObject f22_raptor, GameObject earth, Canvas canvas, TextMeshProUGUI text)
+    void ToggleOrbit(GameObject obj, bool enabled)
     {
-        //Debug.Log("Psyche asteroid selected!");
-        canvas.gameObject.SetActive(false);
-        GetComponent<Animator>().enabled = true;
+        obj.GetComponent<OrbitalMotion>().enabled = enabled;
+        obj.GetComponent<PathRenderer>().enabled = enabled;
 
-        f22_raptor.GetComponent<Animator>().enabled = false;
-
-        var psycheOrbit = psyche.GetComponent<OrbitalMotion>();
-        var psychePath = psyche.GetComponent<PathRenderer>();
-        var psycheLine = psyche.GetComponent<LineRenderer>();
-
-        var f22Orbit = f22_raptor.GetComponent<OrbitalMotion>();
-        var f22Path = f22_raptor.GetComponent<PathRenderer>();
-        var f22Line = f22_raptor.GetComponent<LineRenderer>();
-
-
-        var earthOrbit = earth.GetComponent<OrbitalMotion>();
-        var earthPath = earth.GetComponent<PathRenderer>();
-        var earthLine = earth.GetComponent<LineRenderer>();
-
-        // Enable Psyche orbit and path
-        psycheOrbit.enabled = true;
-        psychePath.enabled = true;
-
-        // Enable F-22 orbit and path
-        f22Orbit.enabled = true;
-        f22Path.enabled = true;
-        f22Line.enabled = true;
-
-        // Enable Earth orbit and path
-        earthOrbit.enabled = true;
-        earthPath.enabled = true;
-
-        StartCoroutine(textDisplay(canvas, text, earthLine, psycheLine));
+        LineRenderer line = obj.GetComponent<LineRenderer>();
+        if (line != null) line.enabled = enabled;
     }
 
-    String txt = "The Raptor F-22 reaches astonishing speeds exceeding Mach 2.0 with afterburners engaged,";
-    String txt2 = "That’s equivalent to an impressive 340 meters per second.";
-    String txt3 = "Yet, Psyche’s average orbital speed is around 17.34 kilometers per second — over six times the speed of sound in space.";
-    String txt4 = "Even Earth moves faster, orbiting the Sun at approximately 29.78 kilometers per second — about 70% faster than Psyche.";
-    String txt5 = "So, even if you come last in a race on Earth, take comfort: you’re still hurtling through space faster than an asteroid.";
-
-
-    IEnumerator textDisplay(Canvas canvas, TextMeshProUGUI text, LineRenderer earth, LineRenderer psyche)
+    IEnumerator PlayNarrationSequence(LineRenderer earthLine, LineRenderer psycheLine)
     {
-        RectTransform rectTransform = text.GetComponent<RectTransform>();
-
-        // Set text alignment to top-right
-        text.alignment = TextAlignmentOptions.TopRight;
+        text.alignment = TextAlignmentOptions.BottomLeft;
         text.fontSize = 10f;
-        text.text = txt;
-        canvas.gameObject.SetActive(true);  // 5 seconds into the animatio
-        yield return new WaitForSeconds(10f);
+        homeButton.interactable = true;
+        canvas.gameObject.SetActive(true);
 
-        text.text = "";
-        //canvas.gameObject.SetActive(false);
-        yield return new WaitForSeconds(2f);
+        yield return TypeAndWait("The Raptor F-22 reaches astonishing speeds exceeding Mach 2.0...");
+        yield return TypeAndWait("That’s equivalent to an impressive 340 meters per second.");
+        yield return TypeAndWait("Yet, Psyche’s average orbital speed is around 17.34 kilometers per second.");
 
-        text.text = txt2;
-        //canvas.gameObject.SetActive(true);
-        yield return new WaitForSeconds(5f);
-
-        text.text = "";
-        //canvas.gameObject.SetActive(false);
-        yield return new WaitForSeconds(2f);
-
-        text.text = txt3;
+        // Trigger animation and line width change at pan-out
         GetComponent<Animator>().SetTrigger("OrbitRace");
-        //canvas.gameObject.SetActive(true);
-        yield return new WaitForSeconds(10f);
+        earthLine.startWidth = 2f;
+        earthLine.endWidth = 2f;
+        psycheLine.startWidth = 2f;
+        psycheLine.endWidth = 2f;
 
-        //canvas.gameObject.SetActive(false);
-        text.text = "";
+        yield return TypeAndWait("Even Earth moves faster, orbiting at approximately 29.78 kilometers per second.");
+        yield return TypeAndWait("So, even if you come last in a race on Earth... you're still blazing through space!");
         
-        yield return new WaitForSeconds(2f);
-        earth.startWidth = 2f;
-        psyche.endWidth = 2f;
+
         text.alignment = TextAlignmentOptions.TopLeft;
-
-        text.text = txt4;
-        yield return new WaitForSeconds(10f);
-        text.text = "";
-        yield return new WaitForSeconds(2f);
-
-        text.text = txt5;
-        yield return new WaitForSeconds(10f);
-        text.text = "";
-        yield return new WaitForSeconds(2f);
-
+        homeButton.interactable = true;
     }
 
-
+    IEnumerator TypeAndWait(string line)
+    {
+        text.text = "";
+        foreach (char c in line)
+        {
+            text.text += c;
+            yield return new WaitForSeconds(0.02f);
+        }
+        yield return new WaitForSeconds(7f);
+        text.text = "";
+        yield return new WaitForSeconds(1.5f);
+    }
 }
