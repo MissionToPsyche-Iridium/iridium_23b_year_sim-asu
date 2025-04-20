@@ -87,10 +87,6 @@ public class MenuController : MonoBehaviour
                         followPsyche.enabled = true;
                     }
                 }
-
-
-
-
                 break;
             case 2:
                 // Go through all the Quiz questions
