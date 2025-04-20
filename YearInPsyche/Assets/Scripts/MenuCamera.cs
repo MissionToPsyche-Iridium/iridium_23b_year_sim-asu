@@ -1,4 +1,5 @@
-using System.Diagnostics;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -26,8 +27,7 @@ public class MenuCamera : MonoBehaviour
                 position = Input.mousePosition
             };
 
-            var raycastResults = new System.Collections.Generic.List<RaycastResult>();
-
+            var raycastResults = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointerData, raycastResults);
 
             foreach (var result in raycastResults)
@@ -46,8 +46,28 @@ public class MenuCamera : MonoBehaviour
         if (cameraAnimator != null)
         {
             cameraAnimator.enabled = true;
+            StartCoroutine(DisableAnimatorAfterAnimation());
         }
 
         hasPlayedIntro = true;
     }
+
+    IEnumerator DisableAnimatorAfterAnimation()
+    {
+        // Wait 1 frame to ensure Animator is playing
+        yield return null;
+
+        float waitTime = cameraAnimator.GetCurrentAnimatorStateInfo(0).length;
+        if (waitTime <= 0f) waitTime = 5f; // Optional fallback
+        yield return new WaitForSeconds(waitTime);
+
+        cameraAnimator.enabled = false;
+
+        GameObject menu = GameObject.Find("Main Camera")?.transform.Find("Menu")?.gameObject;
+        if (menu != null)
+        {
+            menu.SetActive(true);
+        }
+    }
+
 }

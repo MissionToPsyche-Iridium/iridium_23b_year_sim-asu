@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -25,6 +27,10 @@ public class MenuController : MonoBehaviour
     private int currentQuizIndex = 0;
     private bool isQuizLoaded = false;
 
+    public GameObject simulationCanvas;
+
+    string[] celestialBodies = new string[] { "Mercury", "Venus", "Earth", "Mars", "Psyche", "Jupiter", "Saturn", "Uranus", "Neptune" };
+
     void Start()
     {
         simulation.onClick.AddListener(() => OnButtonClicked(1));
@@ -47,10 +53,48 @@ public class MenuController : MonoBehaviour
         switch (buttonNumber)
         {
             case 1:
+                // Simulation
+                menuCanvas.SetActive(false);
+                simulationCanvas.SetActive(true);
+
+                Button homeButton = simulationCanvas.GetComponentInChildren<Button>();
+
+                if (homeButton != null)
+                {
+                    homeButton.onClick.AddListener(() => OnButtonClicked(4));
+                }
+                else
+                {
+                    UnityEngine.Debug.LogWarning("No button found inside SimulationCanvas");
+                }
+
+                GameObject psyche = GameObject.Find("Psyche");
+                if (psyche != null)
+                {
+                    var orbitalScript = psyche.GetComponent<OrbitalMotion>();
+                    if (orbitalScript != null)
+                    {
+                        orbitalScript.enabled = true;
+                    }
+                }
+
+                GameObject camera = GameObject.Find("Main Camera");
+                if (camera != null)
+                {
+                    var followPsyche = camera.GetComponent<CameraFollowObj>();
+                    if (followPsyche != null)
+                    {
+                        followPsyche.enabled = true;
+                    }
+                }
+
+
+
+
                 break;
             case 2:
                 // Go through all the Quiz questions
-                UnityEngine.Debug.Log("Quiz button clicked");
+                //UnityEngine.Debug.Log("Quiz button clicked");
                 SceneManager.LoadScene("Quiz Question 1");
                 break;
             case 3:
@@ -58,6 +102,7 @@ public class MenuController : MonoBehaviour
                 break;
             case 4:
                 // go back to main menu
+                simulationCanvas.SetActive(false);
                 interactiveCanvas.SetActive(false);
                 menuCanvas.SetActive(true);
                 break;
