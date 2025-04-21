@@ -22,6 +22,8 @@ public class MenuCamera : MonoBehaviour
                 menu.SetActive(true);
             }
             transform.position = new Vector3(1132f, 0f, -5.5f);
+
+            transform.rotation = Quaternion.Euler(0f, 365f, 0f);
         }
     }
 

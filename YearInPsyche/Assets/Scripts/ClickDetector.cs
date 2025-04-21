@@ -11,12 +11,14 @@ public class ClickDetector : MonoBehaviour
     private Canvas canvas;
     private Button homeButton;
     private TextMeshProUGUI text;
+    private bool coroutinePlaying;
 
     private void Start()
     {
         psyche = GameObject.Find("Psyche");
         f22_raptor = GameObject.Find("Jet");
         earth = GameObject.Find("Earth");
+        coroutinePlaying = false;
 
         canvas = GetComponentInChildren<Canvas>(true);
         text = canvas.GetComponentInChildren<TextMeshProUGUI>();
@@ -39,7 +41,10 @@ public class ClickDetector : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
                 //Debug.Log("Clicked on: " + hit.collider.gameObject.name);
-                text.text = "";
+                if (!coroutinePlaying)
+                {
+                    text.text = "";
+                }
                 if (hit.collider.gameObject.name == "Psyche")
                 {
                     OnObjectClicked();
@@ -54,18 +59,22 @@ public class ClickDetector : MonoBehaviour
 
     void OnObjectClicked()
     {
-        //canvas.gameObject.SetActive(false);
-        GetComponent<Animator>().enabled = true;
-        f22_raptor.GetComponent<Animator>().enabled = false;
+        if (!coroutinePlaying)
+        {
+            //canvas.gameObject.SetActive(false);
+            GetComponent<Animator>().enabled = true;
+            f22_raptor.GetComponent<Animator>().enabled = false;
 
-        ToggleOrbit(psyche, true);
-        ToggleOrbit(f22_raptor, true);
-        ToggleOrbit(earth, true);
+            ToggleOrbit(psyche, true);
+            ToggleOrbit(f22_raptor, true);
+            ToggleOrbit(earth, true);
 
-        LineRenderer earthLine = earth.GetComponent<LineRenderer>();
-        LineRenderer psycheLine = psyche.GetComponent<LineRenderer>();
-
-        StartCoroutine(PlayNarrationSequence(earthLine, psycheLine));
+            LineRenderer earthLine = earth.GetComponent<LineRenderer>();
+            LineRenderer psycheLine = psyche.GetComponent<LineRenderer>();
+        
+            coroutinePlaying = true;
+            StartCoroutine(PlayNarrationSequence(earthLine, psycheLine));
+        }
     }
 
     void ToggleOrbit(GameObject obj, bool enabled)
