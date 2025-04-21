@@ -61,7 +61,7 @@ public class MenuController : MonoBehaviour
 
                 if (homeButton != null)
                 {
-                    homeButton.onClick.AddListener(() => OnButtonClicked(4));
+                    homeButton.onClick.AddListener(() => OnButtonClicked(9));
                 }
                 else
                 {
@@ -118,6 +118,10 @@ public class MenuController : MonoBehaviour
             case 8:
                 // load potato scene
                 SceneManager.LoadScene("PotatoPrototype");
+                break;
+            case 9:
+                // reload home scene
+                SceneManager.LoadScene("SolarSystemPrototype");
                 break;
             default:
                 break;

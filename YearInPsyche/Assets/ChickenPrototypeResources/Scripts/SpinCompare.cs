@@ -9,7 +9,7 @@ public class SpinCompare : MonoBehaviour
     public RotateAround_Chicken chickenRotationScript; // Reference to chicken rotation script
     public TMP_Text comparisonText; // UI text to display result
 
-    public float targetDelta = 0.5f; // Allowable difference in speed
+    public float targetDelta = 1.0f; // Allowable difference in speed
     
     // Start is called before the first frame update
     void Start()
