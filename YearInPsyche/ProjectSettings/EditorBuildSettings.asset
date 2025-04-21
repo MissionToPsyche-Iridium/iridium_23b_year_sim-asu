@@ -54,6 +54,9 @@ EditorBuildSettings:
     path: Assets/_Scenes/Prototypes/Quiz Question 8.unity
     guid: fecbbd6b33d57d542875233085f9c293
   - enabled: 1
+    path: Assets/_Scenes/Prototypes/End Of Quiz.unity
+    guid: 5325b5465775ca54eb8ee61aea152125
+  - enabled: 1
     path: Assets/_Scenes/Prototypes/Credits.unity
     guid: ac18d06f1a41df04e9c5e4228262ff54
   - enabled: 1

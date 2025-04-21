@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class BackAndNextButtons : MonoBehaviour
 {
     public int minIndex = 0;
-    public int maxIndex = 15;
+    public int maxIndex = 16;
     public void GoBack()
     {
         if (SceneManager.GetActiveScene().buildIndex > minIndex)
