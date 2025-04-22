@@ -19,7 +19,6 @@ public class MultipleChoice : MonoBehaviour
         panel3.SetActive(false);
     }
 
-    // Update is called once per frame
     public void correct()
     {
         camera1.SetActive(false);

@@ -1,15 +1,12 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class MenuController : MonoBehaviour
 {
-    // Public fields to assign buttons in the inspector
-    // main menu UI elements
+    // Main menu UI
     public Button simulation;
     public Button quiz;
     public Button comparison;
@@ -17,19 +14,23 @@ public class MenuController : MonoBehaviour
     public Button back;
     public GameObject menuCanvas;
 
-    // comparison menu UI elements
+    // Comparison UI
     public Button fighterJet;
     public Button roastChicken;
     public Button potato;
     public GameObject interactiveCanvas;
 
-    private int quizzes = 3;
-    private int currentQuizIndex = 0;
-    private bool isQuizLoaded = false;
+    // Quiz score UI
+    public GameObject quizScoreCanvas;
+    public TextMeshProUGUI quizScores;
+    public Button restartQuiz;
+    public Button returnHome;
 
+    // Simulation UI
     public GameObject simulationCanvas;
 
-    string[] celestialBodies = new string[] { "Mercury", "Venus", "Earth", "Mars", "Psyche", "Jupiter", "Saturn", "Uranus", "Neptune" };
+    private bool isPysche = true;
+    private GameObject psyche;
 
     void Start()
     {
@@ -41,119 +42,97 @@ public class MenuController : MonoBehaviour
         fighterJet.onClick.AddListener(() => OnButtonClicked(6));
         roastChicken.onClick.AddListener(() => OnButtonClicked(7));
         potato.onClick.AddListener(() => OnButtonClicked(8));
+        restartQuiz.onClick.AddListener(() => OnButtonClicked(2));
+        returnHome.onClick.AddListener(() => OnButtonClicked(4));
 
+        psyche = GameObject.Find("Psyche");
+        if (psyche != null) psyche.SetActive(true);
+
+        if (QuizManager.ReturnedFromEndOfQuiz)
+        {
+            menuCanvas.SetActive(false);
+            quizScoreCanvas.SetActive(true);
+
+            int score = QuizManager.Instance != null ? QuizManager.Instance.GetScore() : 0;
+            quizScores.text = $"{score:D2}";
+
+            QuizManager.ReturnedFromEndOfQuiz = false;
+            if (psyche != null) psyche.SetActive(false);
+            isPysche = false;
+        }
     }
 
     void OnButtonClicked(int buttonNumber)
     {
-        // Insert your button-specific functionality here,
-        // e.g., loading a scene, updating UI elements, etc.
-        //menuCanvas.SetActive(false);
-
         switch (buttonNumber)
         {
-            case 1:
-                // Simulation
+            case 1: // Simulation
                 menuCanvas.SetActive(false);
                 simulationCanvas.SetActive(true);
 
                 Button homeButton = simulationCanvas.GetComponentInChildren<Button>();
-
                 if (homeButton != null)
-                {
                     homeButton.onClick.AddListener(() => OnButtonClicked(9));
-                }
-                else
-                {
-                    UnityEngine.Debug.LogWarning("No button found inside SimulationCanvas");
-                }
 
-                GameObject psyche = GameObject.Find("Psyche");
                 if (psyche != null)
                 {
                     var orbitalScript = psyche.GetComponent<OrbitalMotion>();
-                    if (orbitalScript != null)
-                    {
-                        orbitalScript.enabled = true;
-                    }
+                    if (orbitalScript != null) orbitalScript.enabled = true;
                 }
 
-                GameObject camera = GameObject.Find("Main Camera");
+                var camera = GameObject.Find("Main Camera");
                 if (camera != null)
                 {
                     var followPsyche = camera.GetComponent<CameraFollowObj>();
-                    if (followPsyche != null)
-                    {
-                        followPsyche.enabled = true;
-                    }
+                    if (followPsyche != null) followPsyche.enabled = true;
                 }
                 break;
-            case 2:
-                // Go through all the Quiz questions
-                //UnityEngine.Debug.Log("Quiz button clicked");
+
+            case 2: // Quiz
+                if (QuizManager.Instance != null)
+                {
+                    QuizManager.Instance.ResetScore();
+                    QuizManager.ReturnedFromEndOfQuiz = false;
+                }  
+
+                isPysche = true;
                 SceneManager.LoadScene("Quiz Question 1");
                 break;
-            case 3:
+
+            case 3: // Credits
                 SceneManager.LoadScene("Credits");
                 break;
-            case 4:
-                // go back to main menu
+
+            case 4: // Back to Menu
+                if (!isPysche && psyche != null)
+                    psyche.SetActive(true);
                 simulationCanvas.SetActive(false);
                 interactiveCanvas.SetActive(false);
+                if (quizScoreCanvas.activeSelf)
+                    quizScoreCanvas.SetActive(false);
                 menuCanvas.SetActive(true);
                 break;
-            case 5:
-                // go to comparison menu
+
+            case 5: // Comparison
                 menuCanvas.SetActive(false);
                 interactiveCanvas.SetActive(true);
                 break;
+
             case 6:
-                // load fighter jet scene
                 SceneManager.LoadScene("FighterJet");
                 break;
+
             case 7:
-                // load roast chicken scene
                 SceneManager.LoadScene("RoastChicken");
                 break;
+
             case 8:
-                // load potato scene
                 SceneManager.LoadScene("PotatoPrototype");
                 break;
+
             case 9:
-                // reload home scene
                 SceneManager.LoadScene("SolarSystemPrototype");
-                break;
-            default:
                 break;
         }
     }
-
-
-    //IEnumerator StartQuizSequence()
-    //{
-    //    menuCanvas.SetActive(false);
-    //    interactiveCanvas.SetActive(true);
-
-    //    for (currentQuizIndex = 1; currentQuizIndex <= quizzes; currentQuizIndex++)
-    //    {
-    //        string quizScene = $"Quiz Question {currentQuizIndex}";
-    //        SceneManager.LoadScene(quizScene, LoadSceneMode.Additive);
-
-    //        // Wait for the quiz to be completed before proceeding
-    //        yield return new WaitUntil(() => QuizCompleted());
-
-    //        SceneManager.UnloadSceneAsync(quizScene);
-    //    }
-
-    //    // Return to menu after completing all quizzes
-    //    menuCanvas.SetActive(true);
-    //    interactiveCanvas.SetActive(false);
-    //}
-
-    //bool QuizCompleted()
-    //{
-    //    // Implement logic to check if a quiz is completed
-    //    // This could be based on a button click, a score system, or a message from the quiz scene
-    //    return Input.GetKeyDown(KeyCode.Space); // Temporary test: press Space to continue
-    //}
 }

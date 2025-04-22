@@ -20,6 +20,8 @@ public class LoadHomeScene : MonoBehaviour
         switch (buttonNumber)
         {
             case 1:
+                if (SceneManager.GetActiveScene().buildIndex - 1 == 16)
+                    QuizManager.ReturnedFromEndOfQuiz = false;
                 SceneManager.LoadScene("SolarSystemPrototype");
                 break;
             default:
