@@ -58,7 +58,7 @@ public class MenuController : MonoBehaviour
 
             QuizManager.ReturnedFromEndOfQuiz = false;
             if (psyche != null) psyche.SetActive(false);
-            isPysche = false;
+                isPysche = false;
         }
     }
 
@@ -92,7 +92,6 @@ public class MenuController : MonoBehaviour
                 if (QuizManager.Instance != null)
                 {
                     QuizManager.Instance.ResetScore();
-                    QuizManager.ReturnedFromEndOfQuiz = false;
                 }  
 
                 isPysche = true;

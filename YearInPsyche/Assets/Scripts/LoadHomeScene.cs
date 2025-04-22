@@ -13,15 +13,11 @@ public class LoadHomeScene : MonoBehaviour
 
     void OnButtonClicked(int buttonNumber)
     {
-        // Insert your button-specific functionality here,
-        // e.g., loading a scene, updating UI elements, etc.
-        //menuCanvas.SetActive(false);
-
         switch (buttonNumber)
         {
             case 1:
-                if (SceneManager.GetActiveScene().buildIndex - 1 == 16)
-                    QuizManager.ReturnedFromEndOfQuiz = false;
+                if (SceneManager.GetActiveScene().buildIndex == 16)
+                    QuizManager.ReturnedFromEndOfQuiz = true;
                 SceneManager.LoadScene("SolarSystemPrototype");
                 break;
             default:

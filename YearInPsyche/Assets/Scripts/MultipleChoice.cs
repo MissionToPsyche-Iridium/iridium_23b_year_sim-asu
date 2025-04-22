@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,11 +22,18 @@ public class MultipleChoice : MonoBehaviour
 
     public void correct()
     {
+        UnityEngine.Debug.Log("Correct! Question #" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         camera1.SetActive(false);
         camera2.SetActive(true);
         panel1.SetActive(false);
         panel2.SetActive(true);
+
+
+        QuizManager.Instance.AddCorrectAnswer(SceneManager.GetActiveScene().buildIndex);
+        UnityEngine.Debug.Log("Scores: " + QuizManager.Instance.GetScore());
+
     }
+
     public void incorrect()
     {
         panel1.SetActive(false);
