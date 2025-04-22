@@ -2,7 +2,7 @@
 using UnityEngine;
 using static System.Net.Mime.MediaTypeNames;
 
-[ExecuteAlways]
+//[ExecuteAlways]
 [RequireComponent(typeof(LineRenderer))]
 public class PathRenderer : MonoBehaviour
 {
