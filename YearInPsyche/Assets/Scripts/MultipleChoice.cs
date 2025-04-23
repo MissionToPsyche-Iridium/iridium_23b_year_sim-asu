@@ -24,7 +24,7 @@ public class MultipleChoice : MonoBehaviour
 
     public void correct()
     {
-        UnityEngine.Debug.Log("Correct! Question #" + SceneManager.GetActiveScene().buildIndex  + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        //UnityEngine.Debug.Log("Correct! Question #" + SceneManager.GetActiveScene().buildIndex  + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         camera1.SetActive(false);
         camera2.SetActive(true);
         panel1.SetActive(false);

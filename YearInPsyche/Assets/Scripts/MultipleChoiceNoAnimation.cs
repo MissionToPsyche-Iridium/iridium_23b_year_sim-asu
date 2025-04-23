@@ -16,7 +16,7 @@ public class MultipleChoiceNoAnimation : MonoBehaviour
     // Update is called once per frame
     public void correct()
     {
-        UnityEngine.Debug.Log("Correct! Question #" + SceneManager.GetActiveScene().buildIndex + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        //UnityEngine.Debug.Log("Correct! Question #" + SceneManager.GetActiveScene().buildIndex + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         QuestionBox.SetActive(false);
         Correct.SetActive(true);
 
