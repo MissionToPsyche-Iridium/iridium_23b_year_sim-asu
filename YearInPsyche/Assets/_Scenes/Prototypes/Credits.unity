@@ -452,15 +452,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Scroll with arrow keys
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c2a0958ec479a4547a3e406d7e705038, type: 2}
+  m_sharedMaterial: {fileID: -3686259622872403590, guid: c2a0958ec479a4547a3e406d7e705038, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 520093695
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0.11764706}
+    rgba: 1090519039
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0.2509804}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -483,7 +483,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 3
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1310,7 +1310,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -140, y: -897}
+  m_AnchoredPosition: {x: -140, y: -1094.4}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &995394227
@@ -1348,8 +1348,8 @@ MonoBehaviour:
     as Psyche's true rotation speed is too slow for most users to notice. Psyche's
     true rotation speed is around 0.024\xB0/sec."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5bac7f3c1933cb74290897db4e4c1c6e, type: 2}
+  m_sharedMaterial: {fileID: 6002755094039661895, guid: 5bac7f3c1933cb74290897db4e4c1c6e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1379,7 +1379,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1557,8 +1557,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Credits
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 93c856fbd18450049beb7107937e3473, type: 2}
+  m_sharedMaterial: {fileID: -2282693533209355027, guid: 93c856fbd18450049beb7107937e3473, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1698,15 +1698,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Home
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 93c856fbd18450049beb7107937e3473, type: 2}
+  m_sharedMaterial: {fileID: -2282693533209355027, guid: 93c856fbd18450049beb7107937e3473, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1729,7 +1729,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 32
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1838,13 +1838,15 @@ MonoBehaviour:
     - khaizahda from SketchFab\nDog - IanaM from SketchFab \nMassachusetts Image
     - https://worldpopulationreview.com/states/massachusetts/outline \nTitanic -
     pkaran6254 from SketchFab\nWorld Cup Trophy - Daily Footy Models from SketchFab\nLockheed
-    Martin F-22 \"Raptor\" -  Andertan from SketchFab licensed under CC-BY-4.0 http://creativecommons.org/licenses/by/4.0/)\n\n    
-    Sounds:\n\nBackground music composed by Tiago Behar\n\n\n     Made By:\n\nNASA
-    and ASU - Year in Psyche - Team 2\n\r\n     Team Members: \n \nAdem Cufurovic\nCamelia
-    Ariana Binti Ahmad Nasri\nNigel Rajaratnam\nSuhaas Godavarthy\nTiago Behar\r\n\n\n"
+    Martin F-22 \"Raptor\" -  Andertan from SketchFab licensed under CC-BY-4.0 http://creativecommons.org/licenses/by/4.0/)\n\n     
+    Fonts:\n\n\"Eightgon\" - GGBotNet - SIL Open Font License, Version 1.1\n\"Sansation\"
+    - https://www.fontspace.com/sansation-font-f20328 \n\n     Sounds:\n\nBackground
+    music composed by Tiago Behar\n\n     Made By:\n\nNASA and ASU - Year in Psyche
+    - Team 2\n\r\n     Team Members: \n \nAdem Cufurovic\nCamelia Ariana Binti Ahmad
+    Nasri\nNigel Rajaratnam\nSuhaas Godavarthy\nTiago Behar\r\n\n\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c2a0958ec479a4547a3e406d7e705038, type: 2}
+  m_sharedMaterial: {fileID: -3686259622872403590, guid: c2a0958ec479a4547a3e406d7e705038, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1984,15 +1986,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: If you see this you have gone too far
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 93c856fbd18450049beb7107937e3473, type: 2}
+  m_sharedMaterial: {fileID: -2282693533209355027, guid: 93c856fbd18450049beb7107937e3473, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4289111800
+  m_fontColor: {r: 0.97064984, g: 0.65218717, b: 0.65218717, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2015,7 +2017,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 10
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -2315,7 +2317,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 339, y: 164}
-  m_SizeDelta: {x: 90, y: 30}
+  m_SizeDelta: {x: 80, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2059409885
 MonoBehaviour:
@@ -2381,7 +2383,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -1262713225, guid: 70f9d4e83438a1841b070743dd621397, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2390,7 +2392,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.7
 --- !u!222 &2059409887
 CanvasRenderer:
   m_ObjectHideFlags: 0
