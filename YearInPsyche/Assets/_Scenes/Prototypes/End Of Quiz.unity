@@ -802,7 +802,7 @@ GameObject:
   - component: {fileID: 977048515}
   - component: {fileID: 977048514}
   m_Layer: 5
-  m_Name: Home Button
+  m_Name: Score Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1208,7 +1208,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Home
+  m_text: Score
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 93c856fbd18450049beb7107937e3473, type: 2}
   m_sharedMaterial: {fileID: -2282693533209355027, guid: 93c856fbd18450049beb7107937e3473, type: 2}

@@ -25,6 +25,7 @@ public class MenuController : MonoBehaviour
     public TextMeshProUGUI quizScores;
     public Button restartQuiz;
     public Button returnHome;
+    public Button returnHomeScoreCanvas;
 
     // Simulation UI
     public GameObject simulationCanvas;
@@ -44,6 +45,7 @@ public class MenuController : MonoBehaviour
         potato.onClick.AddListener(() => OnButtonClicked(8));
         restartQuiz.onClick.AddListener(() => OnButtonClicked(2));
         returnHome.onClick.AddListener(() => OnButtonClicked(4));
+        returnHomeScoreCanvas.onClick.AddListener(() => OnButtonClicked(4));
 
         psyche = GameObject.Find("Psyche");
         if (psyche != null) psyche.SetActive(true);
