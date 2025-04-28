@@ -51,18 +51,9 @@ public class OrbitalMotion : MonoBehaviour
 
         float deltaTime;
 
-        if (UnityEngine.Application.isPlaying)
-        {
-            deltaTime = Time.deltaTime;
-        }
-#if UNITY_EDITOR
-        else
-        {
-            float currentTime = (float)UnityEditor.EditorApplication.timeSinceStartup;
-            deltaTime = currentTime - lastEditorTime;
-            lastEditorTime = currentTime;
-        }
-#endif
+        
+        deltaTime = Time.deltaTime;
+       
         orbitalVelocity = 360f / orbitalPeriod;
         currentAngle += orbitalVelocity * deltaTime;
         currentAngle %= 360f;
