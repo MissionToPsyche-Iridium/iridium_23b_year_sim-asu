@@ -94,8 +94,8 @@ public class ClickDetector : MonoBehaviour
         canvas.gameObject.SetActive(true);
 
         yield return TypeAndWait("The Raptor F-22 reaches astonishing speeds exceeding Mach 2.0...");
-        yield return TypeAndWait("That’s equivalent to an impressive 340 meters per second.");
-        yield return TypeAndWait("Yet, Psyche’s average orbital speed is around 17.34 kilometers per second.");
+        yield return TypeAndWait("That's equivalent to an impressive 340 meters per second.");
+        yield return TypeAndWait("Yet, Psyche's average orbital speed is around 17.34 kilometers per second.");
 
         // Trigger animation and line width change at pan-out
         GetComponent<Animator>().SetTrigger("OrbitRace");
