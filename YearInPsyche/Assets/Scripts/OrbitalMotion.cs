@@ -15,7 +15,6 @@ public class OrbitalMotion : MonoBehaviour
     private float semiMinorAxis;
     private Vector3 focusOffset;
 
-    private float lastEditorTime;
 
     void OnEnable()
     {
@@ -37,12 +36,11 @@ public class OrbitalMotion : MonoBehaviour
 
         orbitalVelocity = 360f / orbitalPeriod;
 
-        //  b² = a²(1 - e²)
+        //  bï¿½ = aï¿½(1 - eï¿½)
         semiMinorAxis = semiMajorAxis * Mathf.Sqrt(1 - orbitalEccentricity * orbitalEccentricity);
 
         focusOffset = new Vector3(semiMajorAxis * orbitalEccentricity, 0, 0);
 
-        lastEditorTime = (float)UnityEditor.EditorApplication.timeSinceStartup;
     }
 
     void Update()
