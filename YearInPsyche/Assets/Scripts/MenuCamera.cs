@@ -15,6 +15,7 @@ public class MenuCamera : MonoBehaviour
         if (hasPlayedIntro)
         {
             cameraAnimator.enabled = false;
+            clickablePanel.SetActive(false);
 
             GameObject menu = GameObject.Find("Main Camera")?.transform.Find("Menu")?.gameObject;
             if (menu != null)
@@ -65,7 +66,7 @@ public class MenuCamera : MonoBehaviour
     {
         // Wait 1 frame to ensure Animator is playing
         yield return null;
-
+        
         float waitTime = cameraAnimator.GetCurrentAnimatorStateInfo(0).length;
         if (waitTime <= 0f) waitTime = 5f; // Optional fallback
         yield return new WaitForSeconds(waitTime);
@@ -76,6 +77,7 @@ public class MenuCamera : MonoBehaviour
         if (menu != null)
         {
             menu.SetActive(true);
+            clickablePanel.SetActive(false);
         }
     }
 
